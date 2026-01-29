@@ -102,7 +102,7 @@ Included in this repository is a **single-file** web application (`index.html`) 
 
 ---
 
-## 🏆 Top 50 Most Used Badges (Cheat Sheet)
+## 🏆 Most Used Badges (Cheat Sheet)
 
 For advanced power users, here are the absolute essentials for any serious repository.
 
@@ -187,4 +187,5 @@ We believe in the power of community. If you find a broken badge or have a new o
 *It helps others find these resources.*
 
 </div>
+
 
