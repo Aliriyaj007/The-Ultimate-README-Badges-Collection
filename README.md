@@ -56,8 +56,8 @@ graph LR
     A[Plain Text README] -->|Low Trust| B(User Leaves)
     C[Badged README] -->|High Trust| D(User Stars & Forks)
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#9f9,stroke:#333,stroke-width:2px
+    style A fill:#f2f,stroke:#333,stroke-width:2px
+    style C fill:#2f2,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -187,3 +187,4 @@ We believe in the power of community. If you find a broken badge or have a new o
 *It helps others find these resources.*
 
 </div>
+
