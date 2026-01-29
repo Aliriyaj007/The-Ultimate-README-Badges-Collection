@@ -13,9 +13,10 @@ This document serves as a comprehensive index for **The Ultimate README Badges C
 *   [Deployment, Hosting & Containers](#-deployment--hosting)
 *   [Social Media & Community](#-social--community)
 *   [Funding & Sponsorships](#-funding)
-*   [Frameworks & Tech Stack](#-frameworks--tech-stack)
+*   [Languages & Frameworks](#-languages--frameworks)
 *   [Databases & Services](#-databases--services)
 *   [Repository Metadata & Status](#-repository-metadata--status)
+*   [Development Stacks](#-development-stacks)
 *   [Custom, Fun & Miscellaneous](#-custom--other)
 
 ---
@@ -100,7 +101,7 @@ This document serves as a comprehensive index for **The Ultimate README Badges C
 *   **PayPal:** Donate badge.
 *   **Buy Me A Coffee:** Standard yellow button.
 
-### � [Frameworks & Tech Stack](./Categories/11-frameworks-tech-stack.md)
+### 💻 [Languages & Frameworks](./Categories/11-languages-frameworks.md)
 *   **Frontend:** React, Vue, Angular, Svelte, Next.js, Tailwind.
 *   **Backend:** Node.js, Python, Java, Go, Rust, Django, Spring, Laravel.
 *   **Mobile:** Flutter, React Native, Swift, Kotlin.
@@ -111,7 +112,12 @@ This document serves as a comprehensive index for **The Ultimate README Badges C
 *   **Services:** Nginx, Docker, GraphQL, Apollo.
 
 
-### �🛠️ [Custom & Other](./Categories/10-custom-other.md)
+### 🥞 [Development Stacks](./Categories/14-development-stacks.md)
+*   **MERN:** Mongo, Express, React, Node.
+*   **LAMP:** Linux, Apache, MySQL, PHP.
+*   **T3 Stack:** Next.js, tRPC, Tailwind, Prisma.
+
+### 🛠️ [Custom & Other](./Categories/10-custom-other.md)
 *   **Shields.io:** Custom static badges (Any text/color).
 *   **Made With:** Technologies (Vue, Angular, Swift, Kotlin).
 *   **Styles:** Flat, For-the-badge, Plastic, Social.
