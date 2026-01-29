@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate README Badges Collection</title>
+    <meta name="description" content="The largest, cleanest, copy-paste-ready README badge collection for developers.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables & Themes --- */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-main: #0f172a;
+            --text-secondary: #475569;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --radius: 0.75rem;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="dark"] {
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-main: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --card-bg: #1e293b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="dracula"] {
+            --primary: #bd93f9;
+            --primary-hover: #d6acff;
+            --bg: #282a36;
+            --bg-secondary: #44475a;
+            --text-main: #f8f8f2;
+            --text-secondary: #6272a4;
+            --border: #6272a4;
+            --card-bg: #44475a;
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* --- Controls --- */
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            font-family: var(--font-main);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        button:hover {
+            border-color: var(--text-secondary);
+            background: var(--border);
+        }
+
+        button.primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        button.primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-secondary);
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        /* --- Grid --- */
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .badge-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .badge-preview {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .badge-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .badge-actions button {
+            flex: 1;
+            font-size: 0.875rem;
+            justify-content: center;
+        }
+
+        /* --- Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(2px);
+            z-index: 1000;
+        }
+
+        .modal {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--bg-secondary);
+            color: var(--text-main);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            margin-bottom: 0 !important;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            color: var(--text-secondary);
+            width: auto;
+            height: auto;
+            display: block;
+        }
+
+        .close-btn:hover {
+            color: var(--text-main);
+            background: none;
+            border: none;
+        }
+
+        /* --- Toast --- */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--text-main);
+            color: var(--bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            opacity: 0;
+            transform: translateY(1rem);
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .controls {
+                width: 100%;
+            }
+
+            .badge-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <div>
+                    <h1>The Ultimate Badge Collection</h1>
+                    <p class="subtitle">The largest, cleanest, copy-paste-ready README badge collection for developers.
+                    </p>
+                </div>
+                <div class="controls">
+                    <button onclick="document.getElementById('guide-modal').classList.add('open')">❓ Help</button>
+                    <button onclick="toggleTheme()" id="theme-btn">🌙 Dark</button>
+                    <button onclick="backupFavorites()">💾 Backup</button>
+                    <button onclick="document.getElementById('restore-input').click()">📂 Restore</button>
+                    <input type="file" id="restore-input" hidden onchange="restoreFavorites(this)">
+                    <a href="https://github.com/Aliriyaj007/The-Ultimate-README-Badges-Collection" target="_blank"
+                        style="text-decoration:none">
+                        <button class="primary">⭐ Star on GitHub</button>
+                    </a>
+                </div>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search badges (e.g., 'React', 'License', 'Build')..."
+                oninput="filterBadges(this.value)">
+        </header>
+
+        <!-- Main Content -->
+        <main id="app">
+            <!-- Badges will be injected here by JS -->
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>Made with ❤️ by <a href="https://github.com/Aliriyaj007">Aliriyaj007</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+                <a href="#app">Top</a> • <a href="./README.md">View Markdown</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Customizer Modal -->
+    <div class="modal-overlay" id="customizer-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Customize Badge</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+
+            <div style="margin-bottom: 2rem; display: flex; justify-content: center;">
+                <img id="modal-preview" src="" alt="Badge Preview" style="height: 30px;">
+            </div>
+
+            <div class="form-group">
+                <label>Label</label>
+                <input type="text" id="custom-label" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <input type="text" id="custom-message" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Color</label>
+                <input type="color" id="custom-color" value="#2563eb" oninput="updatePreview()" style="height: 40px;">
+            </div>
+            <div class="form-group">
+                <label>Style</label>
+                <select id="custom-style" onchange="updatePreview()">
+                    <option value="flat">Flat</option>
+                    <option value="flat-square">Flat Square</option>
+                    <option value="for-the-badge">For The Badge</option>
+                    <option value="plastic">Plastic</option>
+                    <option value="social">Social</option>
+                </select>
+            </div>
+
+            <div class="controls" style="margin-top: 2rem; justify-content: flex-end;">
+                <button onclick="closeModal()">Close</button>
+                <button class="primary" onclick="copyCustomBadge()">Copy Markdown</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Guide Modal -->
+    <div class="modal-overlay" id="guide-modal">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>📖 User Guide</h2>
+                <button class="close-btn"
+                    onclick="document.getElementById('guide-modal').classList.remove('open')">×</button>
+            </div>
+
+            <div style="line-height: 1.6; color: var(--text-secondary);">
+                <h3 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1rem;">🔍 Searching</h3>
+                <p>Use the large search bar at the top to filter badges by name (e.g. "React", "Build"). The grid
+                    updates instantly.</p>
+
+                <h3 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1rem;">📋 Copying Badges</h3>
+                <p>Click the <strong>Copy</strong> button on any badge card to instantly copy the Markdown code to your
+                    clipboard.</p>
+
+                <h3 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1rem;">🎨 Customizing</h3>
+                <p>Click the <strong>Edit</strong> button to open the live editor. You can change the label text, status
+                    message, color, and style (e.g. "For the Badge" or "Flat").</p>
+
+                <h3 style="color: var(--text-main); margin-bottom: 0.5rem; margin-top: 1rem;">💾 Backup & Restore</h3>
+                <p>Use the <strong>Backup</strong> button to download a JSON file of the current badge list. Use
+                    <strong>Restore</strong> to load it back later.
+                </p>
+
+                <div
+                    style="background: var(--bg-secondary); padding: 1rem; border-radius: 8px; margin-top: 1.5rem; border: 1px solid var(--border);">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem; margin-top: 0;">Want to build your own?
+                    </h3>
+                    <p>Check out our detailed step-by-step guide on creating custom badges with logos and advanced
+                        styles.</p>
+                    <a href="custom-badges-guide.html"
+                        style="display: inline-block; margin-top: 0.5rem; font-weight: 600;">→ Open Custom Badges
+                        Guide</a>
+                </div>
+            </div>
+
+            <div class="controls" style="margin-top: 2rem; justify-content: flex-end;">
+                <button class="primary" onclick="document.getElementById('guide-modal').classList.remove('open')">Got
+                    it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script>
+        // --- Data ---
+        const badgeData = [
+            {
+                category: "🏗️ Build & CI",
+                badges: [
+                    { name: "GitHub Actions", url: "https://img.shields.io/badge/github%20actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white" },
+                    { name: "Travis CI", url: "https://img.shields.io/travis/user/repo.svg" },
+                    { name: "CircleCI", url: "https://circleci.com/gh/circleci/circleci-docs.svg?style=shield" },
+                    { name: "Netlify", url: "https://api.netlify.com/api/v1/badges/b5c4ad27-53be-4e94-94b1-5d799f92194e/deploy-status" },
+                    { name: "Vercel", url: "https://therealsujitk-vercel-badge.vercel.app/?app=vercel&style=flat-square" },
+                    { name: "AppVeyor", url: "https://img.shields.io/appveyor/ci/gruntjs/grunt.svg" },
+                    { name: "Azure Pipelines", url: "https://img.shields.io/azure-devops/build/totodem/8cf3ec0e-d0c2-4fcd-8206-ad204f254a96/2.svg" },
+                    { name: "Bitbucket", url: "https://img.shields.io/bitbucket/pipelines/atlassian/adyen-bitbucket-pipelines-tutorial" },
+                    { name: "GitLab CI", url: "https://img.shields.io/gitlab/pipeline/gitlab-org/gitlab-runner" },
+                    { name: "ESLint", url: "https://img.shields.io/badge/ESLint-4B3263?style=flat&logo=eslint&logoColor=white" },
+                    { name: "Prettier", url: "https://img.shields.io/badge/prettier-1A2C34?style=flat&logo=prettier&logoColor=F7B93E" },
+                    { name: "Black", url: "https://img.shields.io/badge/code%20style-black-000000.svg" },
+                    { name: "StandardJS", url: "https://img.shields.io/badge/code_style-standard-brightgreen.svg" }
+                ]
+            },
+            {
+                category: "🧪 Testing",
+                badges: [
+                    { name: "Codecov", url: "https://img.shields.io/codecov/c/github/codecov/example-python.svg" },
+                    { name: "Coveralls", url: "https://img.shields.io/coveralls/github/lemurheavy/coveralls-ruby.svg" },
+                    { name: "Jest", url: "https://img.shields.io/badge/-jest-%23C21325?style=flat&logo=jest&logoColor=white" },
+                    { name: "Cypress", url: "https://img.shields.io/badge/-cypress-%23E5E5E5?style=flat&logo=cypress&logoColor=058a5e" },
+                    { name: "Mocha", url: "https://img.shields.io/badge/-mocha-%238D6748?style=flat&logo=mocha&logoColor=white" },
+                    { name: "SonarCloud", url: "https://sonarcloud.io/api/project_badges/measure?project=simgrid_simgrid&metric=alert_status" },
+                    { name: "Scrutinizer", url: "https://img.shields.io/scrutinizer/g/filp/whoops.svg" }
+                ]
+            },
+            {
+                category: "📦 Dependencies",
+                badges: [
+                    { name: "NPM Version", url: "https://img.shields.io/npm/v/react.svg" },
+                    { name: "PyPI Version", url: "https://img.shields.io/pypi/v/django.svg" },
+                    { name: "Node Version", url: "https://img.shields.io/node/v/gh-pages.svg" },
+                    { name: "Python Version", url: "https://img.shields.io/pypi/pyversions/django.svg" },
+                    { name: "Dependabot", url: "https://badgen.net/badge/icon/dependabot?icon=dependabot&label" },
+                    { name: "Go Reference", url: "https://pkg.go.dev/badge/golang.org/x/pkgsite.svg" },
+                    { name: "Crates.io", url: "https://img.shields.io/crates/v/rustc-serialize.svg" },
+                    { name: "Snyk", url: "https://snyk.io/test/github/expressjs/express/badge.svg" },
+                    { name: "Libraries.io", url: "https://img.shields.io/librariesio/github/phoet/asin.svg" }
+                ]
+            },
+            {
+                category: "📚 Documentation",
+                badges: [
+                    { name: "ReadTheDocs", url: "https://img.shields.io/readthedocs/requests" },
+                    { name: "GoDoc", url: "https://godoc.org/github.com/golang/gddo?status.svg" },
+                    { name: "Wiki", url: "https://img.shields.io/badge/docs-wiki-blue.svg" },
+                    { name: "Storybook", url: "https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg" },
+                    { name: "Swagger", url: "https://img.shields.io/badge/-Swagger-%23Clojure?style=flat&logo=swagger&logoColor=white" },
+                    { name: "GitHub Pages", url: "https://img.shields.io/badge/github%20pages-deploying-yellow" }
+                ]
+            },
+            {
+                category: "⚖️ License",
+                badges: [
+                    { name: "MIT", url: "https://img.shields.io/badge/License-MIT-green.svg" },
+                    { name: "Apache 2.0", url: "https://img.shields.io/badge/License-Apache_2.0-blue.svg" },
+                    { name: "GPL v3", url: "https://img.shields.io/badge/License-GPLv3-blue.svg" },
+                    { name: "BSD 3-Clause", url: "https://img.shields.io/badge/License-BSD_3--Clause-blue.svg" },
+                    { name: "CC0", url: "https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg" },
+                    { name: "Copyright", url: "https://img.shields.io/badge/Copyright-2024-blue" },
+                    { name: "REUSE", url: "https://api.reuse.software/badge/github.com/fsfe/reuse-tool" },
+                    { name: "OSHWA", url: "https://img.shields.io/badge/OSHWA-UID-blue" }
+                ]
+            },
+            {
+                category: "📉 Analytics",
+                badges: [
+                    { name: "NPM Downloads", url: "https://img.shields.io/npm/dt/express.svg" },
+                    { name: "PyPI Downloads", url: "https://img.shields.io/pypi/dm/django.svg?label=pypi%20downloads" },
+                    { name: "Docker Pulls", url: "https://img.shields.io/docker/pulls/library/ubuntu.svg" },
+                    { name: "GitHub Downloads", url: "https://img.shields.io/github/downloads/atom/atom/total.svg" },
+                    { name: "Visitor Badge", url: "https://visitor-badge.laobi.icu/badge?page_id=user.repo" },
+                    { name: "Hits.dwyl", url: "https://hits.dwyl.com/dwyl/hits.svg" },
+                    { name: "Profile Views", url: "https://komarev.com/ghpvc/?username=your-username" }
+                ]
+            },
+            {
+                category: "🚀 Deployment",
+                badges: [
+                    { name: "Heroku", url: "https://img.shields.io/badge/heroku-%23430098.svg?style=flat&logo=heroku&logoColor=white" },
+                    { name: "Vercel Deploy", url: "https://vercel.com/button" },
+                    { name: "Netlify Deploy", url: "https://www.netlify.com/img/deploy/button.svg" },
+                    { name: "Docker Hub", url: "https://img.shields.io/docker/cloud/build/officiall/docker.svg" },
+                    { name: "AWS", url: "https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat&logo=amazon-aws&logoColor=white" },
+                    { name: "Google Cloud", url: "https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=flat&logo=google-cloud&logoColor=white" },
+                    { name: "Azure", url: "https://img.shields.io/badge/azure-%230072C6.svg?style=flat&logo=microsoftazure&logoColor=white" },
+                    { name: "DigitalOcean", url: "https://img.shields.io/badge/DigitalOcean-%23013399.svg?style=flat&logo=digitalocean&logoColor=white" },
+                    { name: "Cloudflare Pages", url: "https://img.shields.io/badge/Cloudflare%20Pages-F38020?style=flat&logo=Cloudflare-Pages&logoColor=white" },
+                    { name: "Render", url: "https://img.shields.io/badge/Render-%46E3B7.svg?style=flat&logo=render&logoColor=white" },
+                    { name: "Fly.io", url: "https://img.shields.io/badge/FLY.IO-%234c4842.svg?style=flat&logo=fly.io&logoColor=white" },
+                    { name: "Railway", url: "https://img.shields.io/badge/Railway-131415?style=flat&logo=railway&logoColor=white" },
+                    { name: "Repl.it", url: "https://repl.it/badge/github/user/repo" },
+                    { name: "Colab", url: "https://colab.research.google.com/assets/colab-badge.svg" }
+                ]
+            },
+            {
+                category: "💬 Social",
+                badges: [
+                    { name: "Discord", url: "https://img.shields.io/discord/1234567890?style=for-the-badge&logo=discord&logoColor=white&label=Discord" },
+                    { name: "Twitter", url: "https://img.shields.io/twitter/follow/twitter?style=social" },
+                    { name: "Slack", url: "https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" },
+                    { name: "YouTube", url: "https://img.shields.io/youtube/channel/views/UC-lHJZR3Gqxm24_Vd_AJ5Yw?style=social" },
+                    { name: "Twitch", url: "https://img.shields.io/twitch/status/twitch?style=social" },
+                    { name: "Reddit", url: "https://img.shields.io/reddit/subreddit-subscribers/reddit?style=social" },
+                    { name: "StackOverflow", url: "https://img.shields.io/stackexchange/stackoverflow/r/1?style=social" },
+                    { name: "Telegram", url: "https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" },
+                    { name: "LinkedIn", url: "https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" },
+                    { name: "Gmail", url: "https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" },
+                    { name: "Mastodon", url: "https://img.shields.io/badge/Mastodon-6364FF?style=for-the-badge&logo=mastodon&logoColor=white" },
+                    { name: "Website", url: "https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white" }
+                ]
+            },
+            {
+                category: "💸 Funding",
+                badges: [
+                    { name: "GitHub Sponsors", url: "https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA" },
+                    { name: "Patreon", url: "https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dpatreon%26type%3Dpatrons&style=flat" },
+                    { name: "Ko-fi", url: "https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" },
+                    { name: "Buy Me A Coffee", url: "https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" },
+                    { name: "Open Collective", url: "https://img.shields.io/opencollective/backers/webpack?logo=opencollective" },
+                    { name: "PayPal", url: "https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white" },
+                    { name: "Bitcoin", url: "https://img.shields.io/badge/Bitcoin-000?style=for-the-badge&logo=bitcoin&logoColor=white" },
+                    { name: "Ethereum", url: "https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white" }
+                ]
+            },
+            {
+                category: "📊 Repo Metadata",
+                badges: [
+                    { name: "Stars", url: "https://img.shields.io/github/stars/Aliriyaj007/The-Ultimate-README-Badges-Collection?style=social" },
+                    { name: "Forks", url: "https://img.shields.io/github/forks/Aliriyaj007/The-Ultimate-README-Badges-Collection?style=social" },
+                    { name: "Watchers", url: "https://img.shields.io/github/watchers/Aliriyaj007/The-Ultimate-README-Badges-Collection?style=social" },
+                    { name: "License", url: "https://img.shields.io/github/license/Aliriyaj007/The-Ultimate-README-Badges-Collection" },
+                    { name: "Last Commit", url: "https://img.shields.io/github/last-commit/Aliriyaj007/The-Ultimate-README-Badges-Collection" },
+                    { name: "Contributors", url: "https://img.shields.io/github/contributors/Aliriyaj007/The-Ultimate-README-Badges-Collection" },
+                    { name: "Repo Size", url: "https://img.shields.io/github/repo-size/Aliriyaj007/The-Ultimate-README-Badges-Collection" },
+                    { name: "Issues", url: "https://img.shields.io/github/issues/Aliriyaj007/The-Ultimate-README-Badges-Collection" },
+                    { name: "Pull Requests", url: "https://img.shields.io/github/issues-pr/Aliriyaj007/The-Ultimate-README-Badges-Collection" },
+                    { name: "Active", url: "https://img.shields.io/badge/status-active-success.svg" },
+                    { name: "Maintained", url: "https://img.shields.io/badge/Maintained%3F-yes-green.svg" },
+                    { name: "Live Web App", url: "https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fgoogle.com" }
+                ]
+            },
+            {
+                category: "💻 Tech Stack",
+                badges: [
+                    { name: "React", url: "https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" },
+                    { name: "Vue.js", url: "https://img.shields.io/badge/vuejs-%2335495e.svg?style=flat&logo=vuedotjs&logoColor=%234FC08D" },
+                    { name: "Angular", url: "https://img.shields.io/badge/angular-%23DD0031.svg?style=flat&logo=angular&logoColor=white" },
+                    { name: "Svelte", url: "https://img.shields.io/badge/svelte-%23f1413d.svg?style=flat&logo=svelte&logoColor=white" },
+                    { name: "Next.js", url: "https://img.shields.io/badge/Next-black?style=flat&logo=next.js&logoColor=white" },
+                    { name: "Tailwind", url: "https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white" },
+                    { name: "Bootstrap", url: "https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=flat&logo=bootstrap&logoColor=white" },
+                    { name: "Node.js", url: "https://img.shields.io/badge/node.js-6DA55F?style=flat&logo=node.js&logoColor=white" },
+                    { name: "Python", url: "https://img.shields.io/badge/python-3670A0?style=flat&logo=python&logoColor=ffdd54" },
+                    { name: "Java", url: "https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white" },
+                    { name: "Go", url: "https://img.shields.io/badge/go-%2300ADD8.svg?style=flat&logo=go&logoColor=white" },
+                    { name: "Rust", url: "https://img.shields.io/badge/rust-%23000000.svg?style=flat&logo=rust&logoColor=white" },
+                    { name: "Django", url: "https://img.shields.io/badge/django-%23092E20.svg?style=flat&logo=django&logoColor=white" },
+                    { name: "Spring", url: "https://img.shields.io/badge/spring-%236DB33F.svg?style=flat&logo=spring&logoColor=white" },
+                    { name: "Laravel", url: "https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white" },
+                    { name: "Flutter", url: "https://img.shields.io/badge/Flutter-%2302569B.svg?style=flat&logo=Flutter&logoColor=white" },
+                    { name: "React Native", url: "https://img.shields.io/badge/react_native-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB" },
+                    { name: "Swift", url: "https://img.shields.io/badge/swift-F54A2A?style=flat&logo=swift&logoColor=white" },
+                    { name: "Kotlin", url: "https://img.shields.io/badge/kotlin-%237F52FF.svg?style=flat&logo=kotlin&logoColor=white" }
+                ]
+            },
+            {
+                category: "🗄️ Databases",
+                badges: [
+                    { name: "PostgreSQL", url: "https://img.shields.io/badge/postgres-%23316192.svg?style=flat&logo=postgresql&logoColor=white" },
+                    { name: "MongoDB", url: "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat&logo=mongodb&logoColor=white" },
+                    { name: "MySQL", url: "https://img.shields.io/badge/mysql-%2300f.svg?style=flat&logo=mysql&logoColor=white" },
+                    { name: "Redis", url: "https://img.shields.io/badge/redis-%23DD0031.svg?style=flat&logo=redis&logoColor=white" },
+                    { name: "SQLite", url: "https://img.shields.io/badge/sqlite-%2307405e.svg?style=flat&logo=sqlite&logoColor=white" },
+                    { name: "Firebase", url: "https://img.shields.io/badge/firebase-%23039BE5.svg?style=flat&logo=firebase" },
+                    { name: "Supabase", url: "https://img.shields.io/badge/Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white" },
+                    { name: "MariaDB", url: "https://img.shields.io/badge/MariaDB-003545?style=flat&logo=mariadb&logoColor=white" },
+                    { name: "Appwrite", url: "https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=flat&logo=appwrite&logoColor=white" },
+                    { name: "GraphQL", url: "https://img.shields.io/badge/-GraphQL-E10098?style=flat&logo=graphql&logoColor=white" },
+                    { name: "Apollo", url: "https://img.shields.io/badge/-Apollo-311C87?style=flat&logo=apollo-graphql" },
+                    { name: "Nginx", url: "https://img.shields.io/badge/nginx-%23009639.svg?style=flat&logo=nginx&logoColor=white" },
+                    { name: "RabbitMQ", url: "https://img.shields.io/badge/rabbitmq-%23FF6600.svg?style=flat&logo=rabbitmq&logoColor=white" },
+                    { name: "ElasticSearch", url: "https://img.shields.io/badge/-ElasticSearch-005571?style=flat&logo=elasticsearch" }
+                ]
+            },
+            {
+                category: "🛠️ Custom & Other",
+                badges: [
+                    { name: "Made With Love", url: "https://img.shields.io/badge/made%20with-%E2%9D%A4%EF%B8%8F-red" },
+                    { name: "Maintenance Yes", url: "https://img.shields.io/badge/Maintained%3F-yes-green.svg" },
+                    { name: "Awesome", url: "https://awesome.re/badge.svg" },
+                    { name: "Ask Me Anything", url: "https://img.shields.io/badge/Ask%20Me-Anything%20!-1abc9c.svg" },
+                    { name: "Flat Style", url: "https://img.shields.io/badge/Style-Flat-blue?style=flat" },
+                    { name: "For The Badge", url: "https://img.shields.io/badge/Style-For%20The%20Badge-blue?style=for-the-badge" },
+                    { name: "Twitch Glitch", url: "https://img.shields.io/badge/Twitch-Glitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white" },
+                    { name: "Works on my machine", url: "https://img.shields.io/badge/works%20on%20my%20machine-star!-pink" },
+                    { name: "Spaghetti Code", url: "https://img.shields.io/badge/Spaghetti-Code-yellow" }
+                ]
+            }
+        ];
+
+        // --- App Logic ---
+
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        let activeBadge = null;
+
+        function init() {
+            applyTheme(currentTheme);
+            renderBadges(badgeData);
+        }
+
+        // Rendering
+        function renderBadges(data) {
+            const app = document.getElementById('app');
+            app.innerHTML = '';
+
+            data.forEach(cat => {
+                if (cat.badges.length === 0) return;
+
+                const section = document.createElement('section');
+                section.className = 'category-section';
+
+                section.innerHTML = `
+                    <h2 class="category-title">${cat.category}</h2>
+                    <div class="badge-grid">
+                        ${cat.badges.map(badge => `
+                            <div class="badge-card">
+                                <div class="badge-preview">
+                                    <img src="${badge.url}" alt="${badge.name}" loading="lazy">
+                                </div>
+                                <div style="font-weight: 500">${badge.name}</div>
+                                <div class="badge-actions">
+                                    <button onclick="copyToClipboard('![${badge.name}](${badge.url})')">📋 Copy</button>
+                                    <button onclick="openCustomizer('${badge.name}', '${badge.url}')">🎨 Edit</button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                app.appendChild(section);
+            });
+        }
+
+        // Search
+        function filterBadges(query) {
+            const lowerQuery = query.toLowerCase();
+            const filteredData = badgeData.map(cat => ({
+                category: cat.category,
+                badges: cat.badges.filter(b => b.name.toLowerCase().includes(lowerQuery))
+            }));
+            renderBadges(filteredData);
+        }
+
+        // Theming
+        function toggleTheme() {
+            const themes = ['light', 'dark', 'dracula'];
+            const idx = themes.indexOf(currentTheme);
+            const next = themes[(idx + 1) % themes.length];
+            applyTheme(next);
+        }
+
+        function applyTheme(theme) {
+            currentTheme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+
+            const btn = document.getElementById('theme-btn');
+            const icons = { light: '☀️ Light', dark: '🌙 Dark', dracula: '🧛 Dracula' };
+            btn.textContent = icons[theme];
+        }
+
+        // Customizer
+        function openCustomizer(name, url) {
+            const modal = document.getElementById('customizer-modal');
+            modal.classList.add('open');
+            activeBadge = { name, url };
+
+            // Parse URL roughly
+            // Usually: https://img.shields.io/badge/Label-Message-Color?style=Style&logo=Logo
+            document.getElementById('custom-label').value = name;
+            document.getElementById('custom-message').value = "Status";
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const label = document.getElementById('custom-label').value || 'Label';
+            const msg = document.getElementById('custom-message').value || 'Message';
+            const color = document.getElementById('custom-color').value.substring(1);
+            const style = document.getElementById('custom-style').value;
+
+            // Construct Shield URL
+            const newUrl = `https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(msg)}-${color}?style=${style}`;
+
+            document.getElementById('modal-preview').src = newUrl;
+            activeBadge.generatedUrl = newUrl;
+        }
+
+        function closeModal() {
+            document.getElementById('customizer-modal').classList.remove('open');
+        }
+
+        function copyCustomBadge() {
+            if (activeBadge && activeBadge.generatedUrl) {
+                copyToClipboard(`![${activeBadge.name}](${activeBadge.generatedUrl})`);
+                closeModal();
+            }
+        }
+
+        // Utilities
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            });
+        }
+
+        function backupFavorites() {
+            // Demo backup functionality - dumping all data
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(badgeData));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "badges_backup.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+
+        function restoreFavorites(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    alert("Backup restored! (Demo: re-rendering grid)");
+                    renderBadges(data); // In real app, merge with existing
+                } catch (err) {
+                    alert("Invalid JSON file");
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Start
+        init();
+
+    </script>
+</body>
+
+</html>

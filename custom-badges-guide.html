@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Custom Badges - The Ultimate Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --bg: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --border: #e2e8f0;
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #3b82f6;
+                --text: #f8fafc;
+                --text-secondary: #94a3b8;
+                --bg: #0f172a;
+                --bg-secondary: #1e293b;
+                --border: #334155;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--text);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge-demo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="back-btn">← Back to Badge Collection</a>
+
+    <h1>Mastering Custom Badges</h1>
+    <p style="font-size: 1.25rem; text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+        Everything you need to know about creating, styling, and customizing badges for your README.
+    </p>
+
+    <!-- Section 1: The Basics -->
+    <section>
+        <h2><span class="step-number">1</span> The Anatomy of a Badge</h2>
+        <p>Most badges are generated using <strong>Shields.io</strong>. The basic URL structure is simple:</p>
+
+        <div class="card">
+            <code>https://img.shields.io/badge/&lt;LABEL&gt;-&lt;MESSAGE&gt;-&lt;COLOR&gt;</code>
+            <p style="margin-top: 1rem">
+            <ul>
+                <li><strong>LABEL</strong>: The left side text (e.g., "build").</li>
+                <li><strong>MESSAGE</strong>: The right side text (e.g., "passing").</li>
+                <li><strong>COLOR</strong>: The background color of the message (e.g., "green", "ff0000").</li>
+            </ul>
+            </p>
+            <h3>Example:</h3>
+            <div class="badge-demo">
+                <img src="https://img.shields.io/badge/Status-Active-green" alt="Demo">
+            </div>
+            <pre>![Status](https://img.shields.io/badge/Status-Active-green)</pre>
+        </div>
+    </section>
+
+    <!-- Section 2: Styles -->
+    <section>
+        <h2><span class="step-number">2</span> Choosing a Style</h2>
+        <p>You can change the look of any badge by adding the <code>?style=</code> parameter.</p>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Style Name</th>
+                        <th>Code</th>
+                        <th>Preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Flat (Default)</td>
+                        <td><code>flat</code></td>
+                        <td><img src="https://img.shields.io/badge/demo-style-blue?style=flat"></td>
+                    </tr>
+                    <tr>
+                        <td>Flat Square</td>
+                        <td><code>flat-square</code></td>
+                        <td><img src="https://img.shields.io/badge/demo-style-blue?style=flat-square"></td>
+                    </tr>
+                    <tr>
+                        <td>Plastic</td>
+                        <td><code>plastic</code></td>
+                        <td><img src="https://img.shields.io/badge/demo-style-blue?style=plastic"></td>
+                    </tr>
+                    <tr>
+                        <td>For The Badge</td>
+                        <td><code>for-the-badge</code></td>
+                        <td><img src="https://img.shields.io/badge/demo-style-blue?style=for-the-badge"></td>
+                    </tr>
+                    <tr>
+                        <td>Social</td>
+                        <td><code>social</code></td>
+                        <td><img src="https://img.shields.io/badge/demo-style-blue?style=social"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 3: Adding Logos -->
+    <section>
+        <h2><span class="step-number">3</span> Adding Icons & Logos</h2>
+        <p>Make your badges recognizable by adding brand logos from <strong>Simple Icons</strong> using the
+            <code>?logo=</code> parameter.</p>
+
+        <div class="card">
+            <h3>Steps:</h3>
+            <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                <li>Find a slug from <a href="https://simpleicons.org/" target="_blank">Simple Icons</a> (e.g.,
+                    <code>react</code>, <code>python</code>, <code>gmail</code>).</li>
+                <li>Add it to the URL: <code>?logo=react</code>.</li>
+                <li>(Optional) Change logo color: <code>?logoColor=white</code>.</li>
+            </ol>
+
+            <h3>Examples:</h3>
+
+            <div class="badge-demo">
+                <img src="https://img.shields.io/badge/React-20232a?logo=react&logoColor=61DAFB" alt="React">
+                <code>?logo=react&logoColor=61DAFB</code>
+            </div>
+
+            <div class="badge-demo">
+                <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" alt="Python">
+                <code>?logo=python&logoColor=white</code>
+            </div>
+
+            <div class="badge-demo">
+                <img src="https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white" alt="Gmail">
+                <code>?logo=gmail&logoColor=white</code>
+            </div>
+
+            <pre>![React](https://img.shields.io/badge/React-20232a?logo=react&logoColor=61DAFB)</pre>
+        </div>
+    </section>
+
+    <!-- Section 4: Advanced - Dynamic Badges -->
+    <section>
+        <h2><span class="step-number">4</span> Dynamic Badges (Advanced)</h2>
+        <p>You can create badges that update automatically by pulling JSON data from any API.</p>
+
+        <div class="card">
+            <p><strong>Endpoint:</strong> <code>https://img.shields.io/badge/dynamic/json</code></p>
+            <p><strong>Required Parameters:</strong></p>
+            <ul>
+                <li><code>url</code>: The API URL to fetch.</li>
+                <li><code>query</code>: JSON path to the specific data field (e.g., <code>$.key</code>).</li>
+                <li><code>label</code>: The label text.</li>
+            </ul>
+
+            <h3 style="margin-top: 1rem">Example (Package Version):</h3>
+            <div class="badge-demo">
+                <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpackage.json&query=$.version&label=Version"
+                    alt="Dynamic Demo">
+                <!-- Using a static example image for stability in the guide -->
+            </div>
+            <pre>https://img.shields.io/badge/dynamic/json?url=YOUR_JSON_URL&query=$.version&label=Version</pre>
+        </div>
+    </section>
+
+    <!-- Section 5: Tips -->
+    <section>
+        <h2>💡 Pro Tips</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li style="background: #e0f2fe; color: #0369a1; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                <strong>Spaces:</strong> Use <code>%20</code> or <code>_</code> for spaces (e.g.,
+                <code>Hello%20World</code>).
+            </li>
+            <li style="background: #f0fdf4; color: #15803d; padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem;">
+                <strong>Colors:</strong> You can use Hex codes (without the #) like <code>2563eb</code> or named colors
+                like <code>blue</code>, <code>brightgreen</code>, <code>critical</code>.
+            </li>
+            <li style="background: #fff7ed; color: #c2410c; padding: 1rem; border-radius: 8px;">
+                <strong>Cache:</strong> Badges are cached. If you make a quick change and it doesn't update, wait a few
+                minutes or add a random query param like <code>?cache=1</code>.
+            </li>
+        </ul>
+    </section>
+
+    <footer
+        style="text-align: center; margin-top: 4rem; color: var(--text-secondary); border-top: 1px solid var(--border); padding-top: 2rem;">
+        <p>Part of <strong>The Ultimate README Badges Collection</strong></p>
+    </footer>
+
+</body>
+
+</html>
