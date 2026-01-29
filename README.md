@@ -43,8 +43,8 @@ graph LR
     A[Plain Text README] -->|Low Trust| B(User Leaves)
     C[Badged README] -->|High Trust| D(User Stars & Forks)
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#9f9,stroke:#333,stroke-width:2px
+    style A fill:#f6f,stroke:#333,stroke-width:2px
+    style C fill:#2f2,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -88,7 +88,7 @@ Included in this repository is a **single-file** web application (`index.html`) 
 
 ---
 
-## 🏆 Top 50 Most Used Badges (Cheat Sheet)
+## 🏆 Most Used Badges (Cheat Sheet)
 
 For advanced power users, here are the absolute essentials for any serious repository.
 
@@ -173,3 +173,4 @@ We believe in the power of community. If you find a broken badge or have a new o
 *It helps others find these resources.*
 
 </div>
+
